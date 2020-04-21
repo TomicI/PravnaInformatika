@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.form);
 
-    this.user = new User(null, null, this.form.username, null, this.form.password, null, "error" );
+    this.user = new User(null, null, this.form.username, null, this.form.password, null, "error", null, null );
 
     this.userService.loginCheck(this.user).then( data=>{
         console.log("rezultat");

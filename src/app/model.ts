@@ -5,10 +5,12 @@ export class User  {
   email: string;
   password: string;
   phone: string;
+  brLicneKarte: string;
+  izdateU: string;
   city: string;
 
 
-  constructor(firstName: string, lastName: string, username: string, email: string, password: string, phone: string, city: string) {
+  constructor(firstName: string, lastName: string, username: string, email: string, password: string, phone: string, city: string, brLicneKarte: string, izdateU: string) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
@@ -16,6 +18,8 @@ export class User  {
     this.password = password;
     this.phone = phone;
     this.city = city;
+    this.brLicneKarte = brLicneKarte;
+    this.izdateU = izdateU;
   }
 }
 
@@ -54,6 +58,7 @@ export class Roba {
   novacIsporucen: Date;
   novacIsporucenVracen: Date;
   pravoSaobraznost: boolean;
+
 
   constructor (id: number, naziv: string, opis: string, kolicina: number, cena: number, rokIsporuke: number, rokIsporukeMax: number, kupacOdgovoran: boolean, uputstvo: boolean, nesaobraznostZamenom: boolean, rokOdPrelaskaRizikaNaKupca: number, rokOdustanak: number, deoRobe: string, rokVracanjaRobe: number, rokVracanjaNovca: number, izvrsiteljIsporuke: string, troskoveSnosi: string, troskoviOdustanak: string, brojPrimeraka: number, brojPrimeraKupac: number, vlasnik: User, slika: Blob, robaIsporucena: Date, robaIsporucenaVracena: Date, novacIsporucen: Date, novacIsporucenVracen: Date, pravoSaobraznost: boolean){
     this.id=id;

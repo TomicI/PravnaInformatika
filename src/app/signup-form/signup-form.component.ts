@@ -29,7 +29,9 @@ export class SignupFormComponent implements OnInit {
       username: [''],
       email: [''],
       password: [''],
-      passwordConfirm: ['']
+      passwordConfirm: [''],
+      brLicneKarte: [''],
+      izdateU: ['']
     }, {
       validator: ConfirmPasswordValidator.validate.bind(this)
 

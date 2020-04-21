@@ -68,7 +68,7 @@ export class RobaService {
   }
 
   saobraznost(id: number, zamena: boolean, odustanak: boolean, umanjenje: number): Promise<Roba> {
-    return this.http.put<Roba>(this.ROBA_API +'/saobraznost/' + '/' + zamena + '/' + odustanak + '/' + umanjenje, id).toPromise();
+    return this.http.put<Roba>(this.ROBA_API +'/saobraznost' + '/' + zamena + '/' + odustanak + '/' + umanjenje, id).toPromise();
   }
 }
 

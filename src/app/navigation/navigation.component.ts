@@ -25,14 +25,18 @@ export class NavigationComponent implements OnInit {
 
   username = '';
 
-  constructor(
-              private tokenStorage: TokenService) { }
+  constructor( private tokenStorage: TokenService) { }
   ngOnInit() {
 
     if (this.tokenStorage.getToken()) {
 
+
       this.isLoggedIn = true;
       this.username = this.tokenStorage.getUsername();
+      console.log("g inn");
+      console.log(this.isLoggedIn);
+      console.log(this.username);
+
     }
 
   }

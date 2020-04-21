@@ -100,20 +100,6 @@
               <button class="btn" type="button" (click)="odustani(rr.id)">Odustani od kupovine</button>
             </div>
 
-            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
-              <button class="btn" type="button" (click)="nesaobraznost(rr.id, 1)">Nesaobraznost zamenom</button>
-            </div>
-
-            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
-              <button class="btn" type="button" (click)="nesaobraznost(rr.id, 2)">Nesaobraznost odustanak</button>
-            </div>
-
-            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
-              Nesaobraznost umanji cenu za:
-              <input type="number" [value]="this.umanjiCenu">
-              <button class="btn" type="button" (click)="nesaobraznost(rr.id, 3)">Umanji </button>
-            </div>
-
             <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==true && rr.novacIsporucen!=null && rr.robaIsporucenaVracena!=null && rr.novacIsporucenVracen==null " class="col-md-6">
               <button class="btn" type="button" (click)="novacVracen(rr.id)">Novac vracen</button>
             </div>
@@ -129,6 +115,19 @@
           </div>
 
 
+          <div class="d-flex justify-content-between " *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+            <button class="btn" type="button" (click)="nesaobraznost(rr.id, 1)">Nesaobraznost zamenom</button>
+          </div>
+
+          <div class="d-flex justify-content-between " *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+            <button class="btn" type="button" (click)="nesaobraznost(rr.id, 2)">Nesaobraznost odustanak</button>
+          </div>
+
+          <div class="d-flex justify-content-between " *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+            Nesaobraznost umanji cenu za:
+            <input type="number" [(ngModel)]="umanjiCenu">
+            <button class="btn" type="button" (click)="nesaobraznost(rr.id, 3)">Umanji </button>
+          </div>
         </div>
       </div>
 
@@ -158,7 +157,7 @@
               <button class="btn" type="button" (click)="kupacNijePreuzeo(rr.id)">Kupac nije preuzeo</button>
             </div>
 
-            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==true && rr.novacIsporucen!=null && rr.robaIsporucenaVracena==null" class="col-md-6">
+            <div *ngIf=" rr.pravoSaobraznost==true  && rr.robaIsporucenaVracena==null" class="col-md-6">
               <button class="btn" type="button" (click)="vracenaRobaIsporucena(rr.id)">Vracena roba isporucena</button>
             </div>
           </div>

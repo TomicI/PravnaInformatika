@@ -133,7 +133,7 @@ export class ProfilComponent implements OnInit {
           console.log(data);
         })
       }
-    window.location.reload();
+    //window.location.reload();
   }
 
   novacIsporucen(id: number){
