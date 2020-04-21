@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="mt-2 "></div>
+  <div class="row">
+
+    <div class="col-md-10">
+
+      <div *ngIf="roba.slika!=null" class="d-flex justify-content-between ">
+        <img *ngIf="roba.slika!=undefined" class="images col-md-10 align-content-md-center" src="data:image/png;base64,{{roba.slika}}" />
+      </div>
+<br/><br/>
+      <div class="card">
+
+        <div class="card-header">
+          <h4>Details</h4>
+        </div>
+
+        <div class="card-body">
+          <div *ngIf="roba">
+
+            <div class="d-flex justify-content-between ">
+              <h5>{{roba.naziv}} </h5>
+              <div *ngIf="!(roba.vlasnik.username==user.username)">
+                <button class="btn" type="button" (click)="kupi(roba.id)">Kupi</button>
+              </div>
+              <div *ngIf="roba.vlasnik.username==user.username">
+                <button class="btn" type="button" (click)="ukloni(roba.id)">Ukloni oglas</button>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Opis robe </h5>
+              <p>{{roba.opis}} </p>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Cena </h5>
+              <p>{{roba.cena}} </p>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Kolicina </h5>
+              <p>{{roba.kolicina}} </p>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Rok isporuke </h5>
+              <p>{{roba.rokIsporuke}} - {{roba.rokIsporukeMax}} dana </p>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Rok vracanja robe </h5>
+              <p>{{roba.rokVracanjaRobe}} </p>
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Rok vracanja novca </h5>
+              <p>{{roba.rokVracanjaNovca}} </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,181 @@
+<div class="jumbotron container text-center col-sm-6">
+  <h2 class="text-center" >Predmet za prodaju</h2>
+  <form [formGroup]="robaForm" (ngSubmit)="onSubmit()" >
+
+    <div class="form-group form-inline">
+      <label for="naziv" class="control-label col-sm-4">Naziv: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="naziv" id="naziv" formControlName="naziv" type="text" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="opis" class="control-label col-sm-4">Opis: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="opis" id="opis" formControlName="opis" type="text">
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="kolicina" class="control-label col-sm-4">Kolicina: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="kolicina" id="kolicina" formControlName="kolicina" type="number">
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="cena" class="control-label col-sm-4">Cena:  </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="cena" id="cena" formControlName="cena" type="number">
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="rokIsporuke" class="control-label col-sm-4">Rok isporuke: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="rokIsporuke" formControlName="rokIsporuke" id="rokIsporuke" type="number" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="rokIsporukeMax" class="control-label col-sm-4">Maksimalni rok isporuke: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="rokIsporukeMax"  formControlName="rokIsporukeMax"  id="rokIsporukeMax" type="number" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="kupacOdgovoran" class="control-label col-sm-4">Kupac odgovoran za u slucaju nepreuzimanja? </label>
+      <div class="col-sm-8 text-left">
+        <select class="form-control shadow" name="kupacOdgovoran" id="kupacOdgovoran" (change)="onChangeKupacOdgovoran($event.target.value)">
+          <option [value]="0">Da</option>
+          <option [value]="1">Ne</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="uputstvo" class="control-label col-sm-4">Uputstvo ukljuceno? </label>
+      <div class="col-sm-8 text-left">
+        <select class="form-control shadow" name="uputstvo" id="uputstvo" (change)="onChangeUputstvo($event.target.value)">
+          <option [value]="0">Da</option>
+          <option [value]="1">Ne</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="nesaobraznostZamenom" class="control-label col-sm-4">Nesaobraznost zamenom? </label>
+      <div class="col-sm-8 text-left">
+        <select class="form-control shadow" name="nesaobraznostZamenom" id="nesaobraznostZamenom" (change)="onChangeNesaobraznostZamenom($event.target.value)">
+          <option [value]="0">Da</option>
+          <option [value]="1">Ne</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="rokOdPrelaskaRizikaNaKupca" class="control-label col-sm-4">Rok od prelaska rizika na kupca: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="rokOdPrelaskaRizikaNaKupca" formControlName="rokOdPrelaskaRizikaNaKupca" id="rokOdPrelaskaRizikaNaKupca" type="number" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="rokOdustanak" class="control-label col-sm-4">Rok odustanak: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="rokOdustanak" formControlName="rokOdustanak" id="rokOdustanak" type="number" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="deoRobe" class="control-label col-sm-4">Deo robe za navedeno: </label>
+      <div class="col-sm-8 text-left">
+        <select (click)="robaForm.controls['deoRobe'].markAsTouched(true)" class="form-control shadow" name="deoRobe" id="deoRobe" (change)="onChangeDeoRobe($event.target.value)">
+          <option [value]="0">Prvi</option>
+          <option [value]="1">Poslednji</option>
+        </select>
+        <div *ngIf="robaForm.controls['deoRobe'].touched"
+             class="alert alert-info">
+              U slucaju da se roba dostavlja iz vise delova.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+    <label for="rokVracanjaRobe" class="control-label col-sm-4">Rok vracanja robe: </label>
+    <div class="col-sm-8 text-left">
+      <input class="form-control shadow" name="rokVracanjaRobe" formControlName="rokVracanjaRobe" id="rokVracanjaRobe" type="number" >
+    </div>
+  </div>
+
+    <div class="form-group form-inline">
+      <label for="rokVracanjaNovca" class="control-label col-sm-4">Rok vracanja novca: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="rokVracanjaNovca" formControlName="rokVracanjaNovca" id="rokVracanjaNovca" type="number" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="izvrsiteljIsporuke" class="control-label col-sm-4">Izvrsitelj isporuke: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="izvrsiteljIsporuke" formControlName="izvrsiteljIsporuke" id="izvrsiteljIsporuke" type="text" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="troskoveSnosi" class="control-label col-sm-4">Troskove dostave snosi: </label>
+      <div class="col-sm-8 text-left">
+        <select class="form-control shadow" name="troskoveSnosi" id="troskoveSnosi" (change)="onChangeTroskoveSnosi($event.target.value)">
+          <option [value]="0">Kupac</option>
+          <option [value]="1">Prodavac</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="troskoviOdustanak" class="control-label col-sm-4">Troskove dostave u slucaju odustanka snosi: </label>
+      <div class="col-sm-8 text-left">
+        <select class="form-control shadow" name="troskoviOdustanak" id="troskoviOdustanak" (change)="onChangeTroskoveSnosiOdustanak($event.target.value)">
+          <option [value]="0">Kupac</option>
+          <option [value]="1">Prodavac</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="brojPrimeraka" class="control-label col-sm-4">Broj primeraka ugovora: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="brojPrimeraka" formControlName="brojPrimeraka" id="brojPrimeraka" type="number" >
+      </div>
+    </div>
+
+    <div class="form-group form-inline">
+      <label for="brojPrimeraKupac" class="control-label col-sm-4">Broj primeraka ugovora za kupca: </label>
+      <div class="col-sm-8 text-left">
+        <input class="form-control shadow" name="brojPrimeraKupac" formControlName="brojPrimeraKupac" id="brojPrimeraKupac" type="number" >
+      </div>
+    </div>
+    <br/>
+    <div class="form-group form-inline">
+      <label  class="control-label col-sm-4">Slika: </label>
+      <div class="col-sm-8 text-left">
+      <input
+        style="display: none"
+        type="file" (change)="onSelectedImage($event)"
+        accept=".jpg,.png" #fileInput>
+      <button type="button" (click)="fileInput.click()"> Select File</button>
+      </div>
+    </div><br/>
+    <div *ngIf="robaForm.controls['slika'].touched"
+         class="alert alert-info">
+      <img *ngIf="robaForm.controls['slika']!=undefined" class="images" src="{{this.file}}" style="width: 200px; height: 200px"/>
+
+    </div>
+
+
+    <div class="col-sm-offset-2">
+      <button type="submit" class="btn btn-primary">Sacuvaj</button>
+    </div>
+  </form>
+</div>

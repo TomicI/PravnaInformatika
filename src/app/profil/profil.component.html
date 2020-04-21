@@ -1,0 +1,187 @@
+<div class="container">
+  <div class="mt-2 "></div>
+  <div class="row">
+
+    <div class="col-md-6">
+
+
+      <div class="card">
+
+        <div class="card-header">
+          <h4>Personal info</h4>
+        </div>
+
+        <div class="card-body">
+          <div *ngIf="user">
+
+            <div class="d-flex justify-content-between ">
+              <h5>Name </h5>
+              <p> {{user.firstName}} {{user.lastName}} </p>
+              <div>
+                <button class="btn" type="button" (click)="editName()"><i class="far fa-edit"></i></button>
+              </div>
+            </div>
+
+
+            <div class="d-flex justify-content-between ">
+              <h5>Username </h5>
+              <p>{{user.username}} </p>
+
+            </div>
+
+            <div class="d-flex justify-content-between ">
+              <h5>Email </h5>
+              <p>{{ user.email }} </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-2 "></div>
+
+    </div>
+  </div>
+  <h4>Moji artikli na prodaju: </h4><br/><button *ngIf="!this.prikaziRobu" (click)="prikazi(1)">Prikazi</button><button *ngIf="this.prikaziRobu" (click)="skloni(1)">Sakrij</button>
+  <br/>
+  <div *ngIf="this.prikaziRobu && !(roba.length>0)" class="col-md-10">
+    <h6>Lista je prazna! </h6><br/>
+  </div>
+  <div class="row">
+    <br/>
+
+
+    <div *ngIf="this.prikaziRobu && roba.length>0" class="col-md-10">
+      <div class="card" *ngFor="let rr of roba">
+
+        <div class="card-header">
+          <div class="d-flex justify-content-between " >
+            <h4>{{rr.naziv}}</h4>
+            <button class="btn" type="button" (click)="ukloni(rr.id)">Ukloni</button>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+
+          <div class="d-flex justify-content-between ">
+            <p>Description</p>
+            <p>{{rr.opis}}</p>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <br/>
+  <h4>Kupljeni artikli : </h4><br/><button *ngIf="!this.prikaziKupljenu" (click)="prikazi(2)">Prikazi</button><button *ngIf="this.prikaziKupljenu" (click)="skloni(2)">Sakrij</button>
+  <br/>
+  <div *ngIf="this.prikaziKupljenu && robaKupljena.length==0" class="col-md-10">
+    <h6>Lista je prazna! </h6><br/>
+  </div>
+  <div class="row">
+
+
+    <div *ngIf="this.prikaziKupljenu && robaKupljena.length!=0 " class="col-md-10">
+      <div class="card" *ngFor="let rr of robaKupljena">
+
+        <div class="card-header">
+          <div class="d-flex justify-content-between " >
+            <h4>{{rr.naziv}}</h4>
+            <div *ngIf="rr.robaIsporucena==null " class="col-md-6">
+              <button class="btn" type="button" (click)="robaPrimljena(rr.id)">Roba je primljena</button>
+              </div>
+
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+              <button class="btn" type="button" (click)="odustani(rr.id)">Odustani od kupovine</button>
+            </div>
+
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+              <button class="btn" type="button" (click)="nesaobraznost(rr.id, 1)">Nesaobraznost zamenom</button>
+            </div>
+
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+              <button class="btn" type="button" (click)="nesaobraznost(rr.id, 2)">Nesaobraznost odustanak</button>
+            </div>
+
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen!=null " class="col-md-6">
+              Nesaobraznost umanji cenu za:
+              <input type="number" [value]="this.umanjiCenu">
+              <button class="btn" type="button" (click)="nesaobraznost(rr.id, 3)">Umanji </button>
+            </div>
+
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==true && rr.novacIsporucen!=null && rr.robaIsporucenaVracena!=null && rr.novacIsporucenVracen==null " class="col-md-6">
+              <button class="btn" type="button" (click)="novacVracen(rr.id)">Novac vracen</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+
+          <div class="d-flex justify-content-between ">
+            <p>Description</p>
+            <p>{{rr.opis}}</p>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <h4>Artikli koje sam prodao: </h4><br/><button *ngIf="!this.prikaziProdatu" (click)="prikazi(3)">Prikazi</button><button *ngIf="this.prikaziProdatu" (click)="skloni(3)">Sakrij</button>
+  <br/>
+  <div *ngIf="this.prikaziProdatu && robaProdata.length==0" class="col-md-10">
+    <h6>Lista je prazna! </h6><br/>
+  </div>
+  <div class="row">
+    <br/>
+
+
+    <div *ngIf="this.prikaziProdatu && robaProdata.length>0" class="col-md-10">
+
+      <div class="card" *ngFor="let rr of robaProdata">
+
+        <div class="card-header">
+          <div class="d-flex justify-content-between " >
+            <h4>{{rr.naziv}}</h4>
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==false && rr.novacIsporucen==null " class="col-md-6">
+              <button class="btn" type="button" (click)="novacIsporucen(rr.id)">Novac isporucen</button>
+            </div>
+            <div *ngIf="rr.robaIsporucena==null && rr.pravoSaobraznost==false && rr.novacIsporucen==null " class="col-md-6">
+              <button class="btn" type="button" (click)="kupacNijePreuzeo(rr.id)">Kupac nije preuzeo</button>
+            </div>
+
+            <div *ngIf="rr.robaIsporucena!=null && rr.pravoSaobraznost==true && rr.novacIsporucen!=null && rr.robaIsporucenaVracena==null" class="col-md-6">
+              <button class="btn" type="button" (click)="vracenaRobaIsporucena(rr.id)">Vracena roba isporucena</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+
+          <div class="d-flex justify-content-between ">
+            <p>Description</p>
+            <p>{{rr.opis}}</p>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  </div>
+
+
+
+
+

@@ -1,0 +1,97 @@
+<div *ngIf="roba">
+  <h2 align="center">UGOVOR O PRODAJI NA DALJINU</h2><br/>
+  <h6 align="center">(dalje: Ugovor)</h6><br/>
+  Zaključen dana __________ između:<br/>
+  1.	{{roba.vlasnik.firstName}} {{roba.vlasnik.lastName}} sa sedištem u {{roba.vlasnik.city}},   kao Prodavac,<br/>
+  i<br/>
+  2.	{{user.firstName}} {{user.lastName}} sa sedištem u {{user.city}}, kao Kupac,<br/>
+  U daljem tekstu zajedno Ugovorne strane, a pojedinačno Ugovorna strana.<br/>
+  <h3 align="center">Član 1.</h3><br/>
+  1.1. Ovim Ugovorom o prodaji na daljinu Prodavac prodaje, a Kupac kupuje {{roba.naziv}} u količini {{roba.kolicina}}(dalje: roba). Kupac se obavezuje da za robu koja je predmet ovog Ugovora isplati iznos Prodavcu u iznosu od {{roba.cena}} dinara. <br/>
+
+  1.2. Prodavac je dužan da Kupcu preda robu tako da Kupac postane njen vlasnik, a Kupac je dužan da Prodavcu plati ugovorenu cenu i preuzme robu. <br/>
+
+  1.3. Prodavac je dužan da Kupcu isporuči robu u roku od {{roba.rokIsporuke}} radnih dana od dana zaklučivanja Ugovora, s tim da rok svakako ne može biti duži od {{roba.rokIsporukeMax}} dana.<br/>
+
+  1.4. Isporuka robe izvršiće se {{roba.izvrsiteljIsporuke}}, a troškove isporuke snosi {{roba.troskoveSnosi}}.<br/>
+
+  1.5. Isporuka će biti izvršena Kupcu ili licu koje je Kupac ovlastio.<br/>
+
+  1.6. Kupac <span *ngIf="roba.kupacOdgovoran">je</span>  <span *ngIf="!roba.kupacOdgovoran">nije</span> odgovoran za štetu koja nastane propuštanjem da preuzme robu koju mu je poslao Prodavac u skladu sa ovim Ugovorom. Pod štetom se podrazumeva oštećenje na robi, kao i troškovi koje Prodavac ima zbog propuštanja Kupca da preuzme robu, kao što su: troškovi čuvanja, prepakivanja, vraćanja robe i slično. <br/>
+
+  <h3 align="center">Detalji ugovora o prodaji na daljinu</h3><br/>
+  <h3 align="center">Član 2.</h3><br/>
+  2.1. Kupac zaključenjem ovog Ugovora potvrđuje da je od strane Prodavca upoznat o:<br/>
+  &emsp;•	osnovnim obeležjima robe (proizvoda) koju kupuje<br/>
+  &emsp;•	ceni<br/>
+  &emsp;•	načinu plaćanja<br/>
+  &emsp;•	načinu i roku isporuke i načinu izvršenja drugih ugovornih obaveza,<br/>
+  &emsp;•	funkcionalnosti robe,<br/>
+  &emsp;•	postojanju zakonske odgovornosti Prodavca zbog nesaobraznosti robe ugovoru<br/>
+
+  2.2. Prodavac <span *ngIf="roba.uputstvo">će</span>  <span *ngIf="!roba.uputstvo">neće</span> Kupcu isporučiti uputstvo za upotrebu i montažu.<br/>
+
+  <h3 align="center">Prava Kupca po osnovu nesaobraznosti robe</h3><br/>
+  <h3 align="center">Član 3.</h3><br/>
+
+  3.1. Ako isporučena roba nije saobrazna ugovoru, Kupac nakon što obavesti Prodavca o nesaobraznosti, ima pravo da zahteva od Prodavca da otkloni nesaobraznost, bez naknade, opravkom ili zamenom, odnosno da zahteva odgovarajuće umanjenje cene ili da raskine ugovor u pogledu te robe.<br/>
+
+  3.2. Kupac <span *ngIf="roba.nesaobraznostZamenom">ima</span>  <span *ngIf="!roba.nesaobraznostZamenom">nema</span> pravo da bira da nesaobraznost robe Prodavac otkloni zamenom.<br/>
+
+  3.3. Ako otklanjanje nesaobraznosti u skladu sa stavom 2. ovog člana nije moguće, Kupac ima pravo da zahteva odgovarajuće umanjenje cene ili raskid ugovora ako:<br/>
+  &emsp;•	Nesaobraznost ne može da se otkloni zamenom uopšte niti u primerenom roku<br/>
+  &emsp;•	Ne može da ostvari pravo na zamenu, odnosno ako Prodavac nije izvršio zamenu u primerenom roku<br/>
+  &emsp;•	Zamena ne može da se sprovede bez značajnijih nepogodnosti za Kupca zbog prirode robe i njene namene<br/>
+  &emsp;•	Otklanjanje nesaobraznosti zamenom predstavlja nesrazmerno opterećenje za Prodavca.<br/>
+
+  3.4. Nesrazmerno opterećenje za Prodavca u smislu stava 3. tačka 4. ovog člana, javlja se ako u poređenju sa umanjenjem cene i raskidom ugovora, stvara preterane troškove, uzimajući u obzir:<br/>
+  &emsp;•	Vrednost robe koju bi imala da je saobrazna ugovoru
+  &emsp;•	Značaj saobraznosti u konkretnom slučaju
+  &emsp;•	Da li se saobraznost može otkloniti bez značajnijih nepogodnosti za Kupca.
+
+  3.5. Kupac ima pravo da zahteva zamenu, odgovarajuće umanjenje cene ili da raskine ugovor zbog istog ili drugog nedostatka saobraznosti koji se posle prve opravke pojavi, a ponovna opravka je moguća samo uz izričitu saglasnost Kupca.<br/>
+
+  3.6. Uzimajući u obzir prirodu robe i svrhu zbog koje je Kupac nabavio, zamena robe mora se izvršiti u primerenom roku bez značajnih neugodnosti za Kupca i uz njegovu saglasnost.<br/>
+
+  3.7. Ako se nesaobraznost pojavi u roku od {{roba.rokOdPrelaskaRizikaNaKupca}} od dana prelaska rizika na Kupca, on ima pravo da bira između zahteva da se nesaobraznost otkloni zamenom, odgovarajućim umanjenjem cene ili da izjavi da raskida ugovor.<br/>
+
+  3.8. Prodavac je odgovoran za nesaobraznost robe ugovoru koja se pojavi u roku od {{roba.rokOdPrelaskaRizikaNaKupca}} od dana prelaska rizika na Kupca.<br/>
+  Momenat prelaska rizika sa Prodavca na Kupca je momenat predaje robe Kupcu ili licu koje je Kupac ovlastio za preuzimanje robe u njegovo ime.<br/>
+
+  3.9. Ako nesaobraznost nastane u roku od {{roba.rokOdPrelaskaRizikaNaKupca}} od dana prelaska rizika na Kupca, pretpostavlja se da je nesaobraznost postojala u trenutku prelaska rizika, osim ako je to u suprotnosti sa prirodom robe i prirodom određene nesaobraznosti.<br/>
+  <h3 align="center">Član 4.</h3><br/>
+  4.1. Kupac ima pravo da odustane od Ugovora zaključenog na daljinu, u roku od {{roba.rokOdustanak}} dana, bez navođenja razloga i dodatnih troškova, osim troškova vraćanja robe, koje u ovom slučaju snosi {{roba.troskoviOdustanak}}. Kod ugovora o prodaji robe, rok od {{roba.rokOdustanak}} dana računa se od trenutka kada roba dospe u državinu Kupca, odnosno trećeg lica koje je odredio Kupac, a koje nije prevoznik. Kada Kupac jednom porudžbenicom naruči više vrsta roba koje se isporučuju zasebno, rok od {{roba.rokOdustanak}} dana počinje da teče kada {{roba.deoRobe}} vrsta naručene robe dospe u državinu Kupca, odnosno trećeg lica koje je odredio Kupac, a koje nije prevoznik. Kada se isporuka robe sastoji iz više pošiljki i delova, rok od {{roba.rokOdustanak}} dana počinje da teče kada je {{roba.deoRobe}} pošiljka ili deo, dospeo u državinu Kupca, odnosno trećeg lica koje je odredio Kupac, a koje nije prevoznik. Rok iz ovog stava ističe protekom poslednjeg časa poslednjeg dana roka.<br/>
+
+  4.2. Kupac ostvaruje pravo na odustanak od ugovora izjavom koju može dati na posebnom obrascu za odustanak od ugovora zaključenog na daljinu, odnosno izvan poslovnih prostorija ili na drugi nedvosmislen način (u daljem tekstu: obrazac za odustanak). Izjava o odustanku od ugovora kod ugovora na daljinu i ugovora koji se zaključuju izvan poslovnih prostorija smatra se blagovremenom ukoliko je poslata Prodavcu u roku iz stava 1. ovog člana. Izjava o odustanku od ugovora proizvodi pravno dejstvo od dana kada je poslata Prodavcu. Ako Prodavac omogući Kupcu da elektronski popuni i pošalje obrazac za odustanak, dužan je da ga o prijemu obrasca bez odlaganja obavesti u pisanoj formi ili na drugom trajnom nosaču zapisa.<br/>
+
+  4.3. Prodavac će u trenutku zaključenja ugovora, a najkasnije prilikom isporuke robe predati Kupcu u pisanoj formi ili na trajnom nosaču zapisa obrazac za odustanak i ispravu o ugovoru.<br/>
+
+  4.4. Protekom roka iz tačke 4.1. ovog člana, prestaje pravo Kupca na odustanak od ugovora.<br/>
+
+  4.5. Prodavac je u slučaju zakonitog odustanka od ugovora dužan da Kupcu bez odlaganja vrati iznos koji je Kupac platio po osnovu ugovora, a najkasnije u roku od {{roba.rokVracanjaNovca}} dana od dana kada je primio obrazac za odustanak. Prodavac može da odloži povraćaj sredstava dok ne dobije robu koja se vraća, ili dok Kupac ne dostavi dokaz da je poslao robu Prodavcu u zavisnosti od toga šta nastupa prvo. Kupac je dužan da vrati robu Prodavcu ili licu ovlašćenom od strane Prodavca, bez odlaganja, a najkasnije u roku od {{roba.rokVracanjaRobe}} dana od dana kada je poslao obrazac za odustanak. Kupac je isključivo odgovoran za umanjenu vrednost robe koja nastane kao posledica rukovanja robom na način koji nije adekvatan, odnosno prevazilazi ono što je neophodno da bi se ustanovili priroda, karakteristike i funkcionalnost robe. Kupać će proizvod vratiti u neoštećenoj originalnoj ambalaži, sa svom pripadajućom dokumentacijom koja se nalazi u originalnom pakovanju i u istom stanju u kakvom je i isporučen, bez ikakvih mehaničkih ili bilo kakvih drugih oštećenja.<br/>
+
+  4.6. Kupac nema pravo da odustane od ugovora u slučaju:<br/>
+  &emsp;1)	pružanje usluga, nakon što je usluga u potpunosti izvršena ako je pružanje usluge počelo nakon izričite prethodne saglasnosti Potrošača i uz njegovu potvrdu da zna da gubi pravo na odustanak od ugovora kada trgovac u potpunosti izvrši ugovor;<br/>
+  &emsp;2)	isporuke robe proizvedene prema posebnim zahtevima potrošača ili jasno personalizovane;<br/>
+  &emsp;3)	isporuke robe koja je podložna pogoršanju kvaliteta ili ima kratak rok trajanja;<br/>
+  &emsp;4)	isporuke zapečaćene robe koja se ne može vratiti zbog zaštite zdravlja ili higijenskih razloga i koja je otpečaćena nakon isporuke;<br/>
+  &emsp;5)	isporuke robe koja se, nakon isporuke, zbog svoje prirode neodvojivo meša sa drugom robom;<br/>
+  &emsp;6)	ugovora kojima potrošač izričito zahteva posetu od strane trgovca u cilju sprovođenja hitnih popravki ili održavanja; ukoliko prilikom ove posete trgovac pruži i druge usluge osim onih koje je potrošač konkretno zahtevao ili dostavi drugu robu osim delova za zamenu koji su neophodni za održavanje ili izvršenje popravke, pravo na odustanak od ugovora se odnosi na ove dopunske usluge ili robu;<br/>
+  <h3 align="center">Član 5.</h3><br/>
+
+  5.1. Saobraznost se daje isključivo na ispravnost uređaja, a ne na njegovu funkcionalnost jer se podrazumeva da je Kupac upoznat sa tehničkim karakteristikama proizvoda, pa se saobraznost odnosi na činjenicu da će izabrani proizvod zadovoljiti zahteve kupca u okviru deklarisanih tehničkih mogućnosti propisanih od strane proizvođača. Saobraznost se ne odnosi na poslove održavanja proizvoda tj. čišćenje i sl. Od Kupca se očekuje da kupljeni proizvod ne izlaže štetnim dejstvima (duvanski dim, ekstremno prašnjave prostorije, ekstremno hladne ili ekstremno tople prostorije i sl.). Sve eventualne nepravilnosti prouzrokovane ovakvim tretmanom robe će se otklanjati isključivo na teret Kupca po važećem cenovniku servisnih usluga.<br/>
+
+  5.2. Pravo na saobraznost nije moguće ostvariti ukoliko je do oštećenja ili kvara robe došlo usled transporta nakon isporuke, usled nepravilne montaže, usled nepravilnog održavanja, usled  neispravnih električnih instalacija, nestabilnog napona ili usled strujnog udara ili udara groma, usled više sile (poplava, zemljotres, požar i sl.), usled nepravilnog korišćenja, usled nepridržavanja proizvođačkog uputstva i preporuka o upotrebi proizvoda, usled korišćenja neodgovarajućeg potrošnog materijala koji nije kupljen uz proizvod, usled bilo kakvog mehaničkog oštećenja proizvoda koje je nastalo krivicom Kupca ili trećeg lica za koje Prodavac ne odgovara, usled neovlašćenog popravljanja proizvoda od strane trećeg lica koje nije ovlašćeno od Prodavca ili proizvođača, ukoliko je proizvod vraćen bez računa ili drugog dokaza da je kupljen kod Prodavca.<br/>
+
+  5.3. Kupac je dužan da prilikom preuzimanja kupljenog proizvoda ustanovi kompletnost i fizičku neoštećenost proizvoda koje preuzima.<br/>
+
+  5.4. Kupac će sačuvati originalnu ambalažu kupljenog prizvoda i koristiti je pri svakom internom i eksternom transportu.<br/>
+  <h3 align="center">Član 6.</h3><br/>
+
+  Ugovor je zaključen posredstvom sredstava komunikacije, i to putem online trgovine/emailom u {{roba.brojPrimeraka}} istovetnih primeraka, od kojih je {{roba.brojPrimeraKupac}} za Kupca, a ostale za Prodavca.<br/>
+  U {{roba.vlasnik.city}}<br/>
+  Dana ________________________ godine<br/>
+  <span style="float:left;">__________________ </span>							 <span style="float:right;">__________________ </span><br/>
+  <span style="float:left;">Kupac </span>									<span style="float:right;">Prodavac</span><br/>
+  <span style="float:left;"><button class="btn btn-danger"  (click)="odustani()" >Odustani</button></span>									<span style="float:right;"><button class="btn btn-success" (click)="kupi()" >Kupi</button></span>
+</div>
